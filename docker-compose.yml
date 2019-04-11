@@ -1,0 +1,12 @@
+version: '2'
+services:
+  server:
+    image: ipepe/nginx-with-ssh:spa
+    volumes:
+      - './data/html:/usr/share/nginx/html'
+    ports:
+      - "8080:80"
+    environment:
+      - VIRTUAL_HOST=example.org
+
+# docker-compose up
