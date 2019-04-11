@@ -3,9 +3,9 @@ services:
   server:
     build: .
     volumes:
-      - './data/html:/usr/share/nginx/html'
+      - './data/html:/home/webapp/html'
     ports:
       - "8080:80"
-      - "22:22"
+      - "8022:22"
 
 # docker-compose -f docker-compose.dev.yml up --build

@@ -18,5 +18,6 @@ RUN groupadd -g 1000 webapp && \
     echo "webapp:Password1" | chpasswd
 
 COPY docker-entrypoint.sh /root/docker-entrypoint.sh
+RUN mkdir /home/webapp/.ssh /home/webapp/html
 
 CMD ["/root/docker-entrypoint.sh"]
