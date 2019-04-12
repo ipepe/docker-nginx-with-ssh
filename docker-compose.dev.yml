@@ -4,6 +4,7 @@ services:
     build: .
     volumes:
       - './data/html:/home/webapp/html'
+      - './data/ssh:/home/webapp/.ssh'
     ports:
       - "8080:80"
       - "8022:22"

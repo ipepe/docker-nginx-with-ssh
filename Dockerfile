@@ -12,16 +12,10 @@ RUN rm /etc/nginx/sites-available/* /etc/nginx/sites-enabled/*
 COPY default_webapp.conf /etc/nginx/sites-available/default.conf
 RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
-COPY docker-entrypoint.sh /root/docker-entrypoint.sh
-RUN chmod +x /root/docker-entrypoint.sh
-
 # create webapp user
 RUN groupadd -g 1000 webapp && \
     useradd -m -s /bin/bash -g webapp -u 1000 webapp && \
     echo "webapp:Password1" | chpasswd
 
-USER webapp
-RUN mkdir /home/webapp/.ssh /home/webapp/html
-
-USER root
+COPY docker-entrypoint.sh /root/docker-entrypoint.sh
 CMD ["/root/docker-entrypoint.sh"]
